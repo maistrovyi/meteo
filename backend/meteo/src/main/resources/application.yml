@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  compression:
+      enabled: true
+  servlet:
+    context-path: /meteo/api
+
+spring:
+ data:
+   mongodb:
+     database: meteo
+     host: localhost
+     port: 32768
+     reactive-repositories:
+       enabled: true
+
+management:
+  port: 8090
+  context-path: /meteo/management
+
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
+    org.springframework.data.mongodb.repository.ReactiveMongoRepository: debug
