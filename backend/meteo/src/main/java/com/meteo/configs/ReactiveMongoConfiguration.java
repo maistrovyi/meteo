@@ -10,13 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
-import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 import java.util.Collections;
 
-@EnableMongoAuditing
 @SpringBootConfiguration
 @EnableReactiveMongoRepositories(basePackages = "com.meteo.repositories")
 public class ReactiveMongoConfiguration extends AbstractReactiveMongoConfiguration {

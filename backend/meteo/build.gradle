@@ -1,15 +1,18 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.0.M4'
-	}
-	repositories {
-		mavenCentral()
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.0.M4'
+        embedMongoVersion = '2.0.0'
+        jupiterVersion = '5.0.1'
+        guavaVersion = '23.0'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -19,21 +22,31 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.meteo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.9
+sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
 }
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	compile('org.springframework.boot:spring-boot-starter-webflux')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('io.projectreactor:reactor-test')
+    /***************************** spring *****************************/
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+    /***************************** other *****************************/
+    compileOnly('org.projectlombok:lombok')
+    compile("com.google.guava:guava:${guavaVersion}")
+
+    /***************************** testing *****************************/
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.projectreactor:reactor-test')
+    testCompile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:${embedMongoVersion}")
+    testCompile("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
+    testCompile('org.junit.platform:junit-platform-runner:1.0.1')
+    testCompile('org.mockito:mockito-core:2.8.47')
 }
