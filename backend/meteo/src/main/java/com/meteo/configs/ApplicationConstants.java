@@ -16,6 +16,7 @@ public class ApplicationConstants {
 
         public static final String MEASUREMENT = "/measurement";
         public static final String API_MEASUREMENT = API + MEASUREMENT;
+        public static final String SOCKET_MEASUREMENT = SOCKET + MEASUREMENT;
 
     }
 

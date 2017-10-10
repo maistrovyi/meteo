@@ -1,40 +1,48 @@
 package com.meteo.models;
 
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.annotation.Nonnegative;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
-@Document(collection = "measurements")
-public final class Measurement {
+@Entity
+@NoArgsConstructor
+@Table(name = "measurements")
+@JsonInclude(value = NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Measurement {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "GROUP_ID")
+    private Long id;
 
     @NotNull
-    @Field("temperature")
+    @Column(name = "temperature", nullable = false)
     private BigDecimal temperature;
 
     @NotNull
-    @Field("humidity")
+    @Column(name = "humidity", nullable = false)
     @Nonnegative
     private BigDecimal humidity;
 
     @NotNull
-    @Field("pressure")
+    @Column(name = "pressure", nullable = false)
     @Nonnegative
     private BigDecimal pressure;
 
-    @CreatedDate
-    @Field("time")
+    @Column(name = "time", nullable = false)
     private ZonedDateTime time;
 
     @ConstructorProperties(value = {"temperature", "humidity", "pressure"})

@@ -3,16 +3,24 @@ server:
   compression:
       enabled: true
   servlet:
-    context-path: /meteo/api
+    context-path: /meteo
 
 spring:
- data:
-   mongodb:
-     database: meteo
-     host: localhost
-     port: 32768
-     reactive-repositories:
-       enabled: true
+ jpa:
+   show-sql: true
+   hibernate:
+     ddl-auto: create-drop
+   properties:
+     hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+     hibernate.format_sql: false
+     hibernate.cache.use_second_level_cache: false
+     hibernate.cache.use_query_cache: false
+     hibernate.generate_statistics: false
+ datasource:
+   hikari:
+     jdbc-url: jdbc:mysql://localhost:32768/meteo?autoReconnect=true&useSSL=false
+     username: root
+     password: 12345
 
 management:
   port: 8090
@@ -22,5 +30,4 @@ logging:
   level:
     root: info
     org.springframework.web: info
-    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
-    org.springframework.data.mongodb.repository.ReactiveMongoRepository: debug
+    org.springframework.data.jpa.repository.JpaRepository: debug
