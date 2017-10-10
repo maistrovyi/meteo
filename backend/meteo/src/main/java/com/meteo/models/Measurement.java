@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.annotation.Nonnegative;
 import javax.validation.constraints.NotNull;
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
@@ -24,10 +25,12 @@ public final class Measurement {
 
     @NotNull
     @Field("humidity")
+    @Nonnegative
     private BigDecimal humidity;
 
     @NotNull
     @Field("pressure")
+    @Nonnegative
     private BigDecimal pressure;
 
     @CreatedDate
