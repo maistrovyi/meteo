@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  compression:
+      enabled: true
+  servlet:
+    context-path: /meteo
+
+management:
+  port: 8090
+  context-path: /meteo/management
+
+spring:
+ jpa:
+   show-sql: true
+   hibernate:
+     ddl-auto: create-drop
+   properties:
+     hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+     hibernate.format_sql: false
+     hibernate.cache.use_second_level_cache: false
+     hibernate.cache.use_query_cache: false
+     hibernate.generate_statistics: false
+ datasource:
+   hikari:
+     jdbc-url: jdbc:mysql://localhost:32768/meteo?autoReconnect=true&useSSL=false
+     username: root
+     password: 12345
+     connection-timeout: 30000
+     maximum-pool-size: 3
+     minimum-idle: 1
+     max-lifetime: 600000
+
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    org.springframework.data.jpa.repository.JpaRepository: debug

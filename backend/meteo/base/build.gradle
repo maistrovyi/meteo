@@ -1,0 +1,20 @@
+group = 'com.meteo.base'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    /***************************** modules *****************************/
+    compile project(':warehouse')
+    compile project(':api')
+
+    /***************************** spring *****************************/
+
+    /***************************** testing *****************************/
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.projectreactor:reactor-test')
+    testCompile("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
+    testCompile('org.junit.platform:junit-platform-runner:1.0.1')
+    testCompile('org.mockito:mockito-core:2.8.47')
+}

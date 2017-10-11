@@ -1,4 +1,4 @@
-package com.meteo.meteo;
+package com.meteo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
