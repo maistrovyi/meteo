@@ -10,6 +10,8 @@ management:
   context-path: /meteo/management
 
 spring:
+  profiles:
+    active: dev
  jpa:
    show-sql: true
    hibernate:
