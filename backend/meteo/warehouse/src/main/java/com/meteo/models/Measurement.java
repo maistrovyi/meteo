@@ -6,14 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.Nonnegative;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Data
 @Entity
@@ -25,28 +25,30 @@ public class Measurement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GROUP_ID")
+    @Column(name = "ID")
     private Long id;
 
-    @NotNull
+    @DecimalMin(value = "-25.00")
+    @DecimalMax(value = "30.00")
     @Column(name = "temperature", nullable = false)
     private BigDecimal temperature;
 
-    @NotNull
+    @DecimalMin(value = "0.00")
+    @DecimalMax(value = "100.00")
     @Column(name = "humidity", nullable = false)
-    @Nonnegative
     private BigDecimal humidity;
 
-    @NotNull
+    @DecimalMin(value = "560.00")
+    @DecimalMax(value = "771.00")
     @Column(name = "pressure", nullable = false)
-    @Nonnegative
     private BigDecimal pressure;
 
     @Column(name = "time", nullable = false)
     private ZonedDateTime time;
 
-    @ConstructorProperties(value = {"temperature", "humidity", "pressure"})
     @Builder(builderMethodName = "of")
+    @SuppressWarnings(value = "unused")
+    @ConstructorProperties(value = {"temperature", "humidity", "pressure"})
     public Measurement(BigDecimal temperature, BigDecimal humidity, BigDecimal pressure) {
         this.temperature = temperature;
         this.humidity = humidity;

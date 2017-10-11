@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackageClasses = {ApiModule.class, WarehouseModule.class})
 @SpringBootApplication
+@ComponentScan(basePackageClasses = {ApiModule.class, WarehouseModule.class})
 public class MeteoApplication {
 
     public static void main(String[] args) {
