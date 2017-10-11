@@ -27,3 +27,6 @@ nbdist/
 /gradlew.bat
 /gradle/
 /out/
+/warehouse/out/
+/base/out/
+/api/out/

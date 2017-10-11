@@ -13,7 +13,7 @@ import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 
 @Data
 @Entity

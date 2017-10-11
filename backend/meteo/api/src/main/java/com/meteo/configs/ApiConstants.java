@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class ApplicationConstants {
+public class ApiConstants {
 
     @NoArgsConstructor(access = PRIVATE)
     public static class Endpoints {

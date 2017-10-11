@@ -5,6 +5,10 @@ server:
   servlet:
     context-path: /meteo
 
+management:
+  port: 8090
+  context-path: /meteo/management
+
 spring:
  jpa:
    show-sql: true
@@ -21,10 +25,10 @@ spring:
      jdbc-url: jdbc:mysql://localhost:32768/meteo?autoReconnect=true&useSSL=false
      username: root
      password: 12345
-
-management:
-  port: 8090
-  context-path: /meteo/management
+     connection-timeout: 30000
+     maximum-pool-size: 3
+     minimum-idle: 1
+     max-lifetime: 600000
 
 logging:
   level:

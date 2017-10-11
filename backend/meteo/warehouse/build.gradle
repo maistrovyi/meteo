@@ -1,0 +1,19 @@
+group = 'com.meteo.warehouse'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    mariaDBVersion = '2.1.2'
+    guavaVersion= '23.0'
+}
+
+dependencies {
+/***************************** spring *****************************/
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+    /***************************** jpa *****************************/
+    compile("org.mariadb.jdbc:mariadb-java-client:${mariaDBVersion}")
+}
