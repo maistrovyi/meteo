@@ -8,7 +8,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import com.meteo.configs.ApiConstants.Endpoints;
+import static com.meteo.configs.ApiConstants.Endpoints.*;
 
 @Slf4j
 @Controller
@@ -17,17 +17,22 @@ class MeasurementSocketController {
     @Autowired
     private MeasurementRepositoryResource repository;
 
-    @MessageMapping(Endpoints.SOCKET_MEASUREMENT)
-    @SendTo("/topic/measurement")
+    private final String TEST_RESPONSE = "{ Success }";
+
+    @SendTo(Measurements.TOPIC_MEASUREMENT)
+    @SuppressWarnings("unused")
+    @MessageMapping(Measurements.MEASUREMENT)
     public void save(Measurement measurement) {
         log.info("Measurement post {s}", measurement);
-         repository.save(measurement);
+        repository.save(measurement);
     }
 
-    @MessageMapping(Endpoints.MEASUREMENT)
-    @SendTo("/connectivity/test")
-    public void testConnection(String message) {
-        log.info("Connectivity checking request.");
+    @SendTo(Health.TOPIC_HEALTH)
+    @SuppressWarnings("unused")
+    @MessageMapping(Health.HEALTH)
+    public String testConnection() {
+        log.info("Connectivity checking request, preparing response...");
+        return TEST_RESPONSE;
     }
 
 }
