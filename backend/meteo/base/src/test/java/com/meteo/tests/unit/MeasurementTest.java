@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @Slf4j
 @DataJpaTest
-@Tag(value = "slow")
+@Tag(value = "unit-fast")
 @TestInstance(Lifecycle.PER_CLASS)
 @RunWith(value = JUnitPlatform.class)
 @ExtendWith(value = SpringExtension.class)

@@ -1,3 +1,4 @@
+/*
 package com.meteo.configs;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,7 @@ public class WebSocketConfiguration extends AbstractWebSocketMessageBrokerConfig
     }
 
     public void registerStompEndpoints(@Nonnull StompEndpointRegistry stompEndpointRegistry) {
-        stompEndpointRegistry.addEndpoint("/game").withSockJS();
+        stompEndpointRegistry.addEndpoint("/game").setAllowedOrigins("*").withSockJS();
     }
 
-}
+}*/

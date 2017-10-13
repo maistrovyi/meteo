@@ -1,6 +1,6 @@
-package com.meteo.controllers.socket;
+/*
+package com.meteo.controllers;
 
-import com.meteo.GameState;
 import com.meteo.repositories.MeasurementRepositoryResource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,20 @@ class MeasurementSocketController {
     @Autowired
     private MeasurementRepositoryResource repository;
 
-    /*@SendTo(Measurements.TOPIC_MEASUREMENT)
+    */
+/*@SendTo(Measurements.TOPIC_MEASUREMENT)
 //    @SuppressWarnings("unused")
     @MessageMapping(Measurements.MEASUREMENT)
     public void save(Measurement measurement) {
         log.info("Measurement post {s}", measurement);
         repository.save(measurement);
-    }*/
+    }*//*
+
 
     @MessageMapping("/create/{uuid}")
     @SendTo("/topic/board/{uuid}")
-    public GameState createGame(@DestinationVariable String uuid) {
-        return new GameState(uuid);
+    public String createGame(@DestinationVariable String uuid) {
+        return uuid;
     }
 
-}
+}*/
