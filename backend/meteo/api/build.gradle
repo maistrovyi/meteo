@@ -11,7 +11,7 @@ dependencies {
     /***************************** spring *****************************/
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
-//    compile('org.springframework.boot:spring-boot-starter-websocket')
+    compile('org.springframework.boot:spring-boot-starter-amqp')
 
     /***************************** testing *****************************/
     testCompile('org.springframework.boot:spring-boot-starter-test')

@@ -2,7 +2,10 @@ package com.meteo;
 
 public final class SocketHealth {
 
+    @SuppressWarnings("WeakerAccess")
     public final String message;
+
+    @SuppressWarnings("WeakerAccess")
     public final SocketStatus status;
 
     public SocketHealth(String message, SocketStatus status) {
@@ -10,9 +13,9 @@ public final class SocketHealth {
         this.status = status;
     }
 
-    public enum  SocketStatus {
+    public enum SocketStatus {
 
-        SUCCESS, BAD_REQUEST
+        OK, BAD_REQUEST
 
     }
 
