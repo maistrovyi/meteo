@@ -1,4 +1,4 @@
-package com.meteo;
+package com.meteo.models;
 
 public final class SocketHealth {
 
