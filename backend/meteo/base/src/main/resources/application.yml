@@ -1,7 +1,5 @@
 server:
   port: 8080
-  compression:
-      enabled: true
   servlet:
     context-path: /meteo
 
@@ -10,6 +8,8 @@ management:
   context-path: /meteo/management
 
 spring:
+ profiles:
+   active: dev
  jpa:
    show-sql: true
    hibernate:
@@ -29,6 +29,11 @@ spring:
      maximum-pool-size: 3
      minimum-idle: 1
      max-lifetime: 600000
+ rabbitmq:
+   port: 32777
+   host: localhost
+   username: admin
+   password: admin
 
 logging:
   level:

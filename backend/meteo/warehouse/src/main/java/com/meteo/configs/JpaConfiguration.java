@@ -5,11 +5,13 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+@Profile(value = "dev")
 @SpringBootConfiguration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.meteo.repositories")

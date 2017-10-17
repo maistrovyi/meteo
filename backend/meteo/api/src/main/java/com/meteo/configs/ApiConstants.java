@@ -10,13 +10,25 @@ public class ApiConstants {
     @NoArgsConstructor(access = PRIVATE)
     public static class Endpoints {
 
-        public static final String API = "/api";
-        public static final String SOCKET = "/socket";
+        public static final String APP = "/app";
+        public static final String WEBSOCKET = "/websocket";
         public static final String TOPIC = "/topic";
 
-        public static final String MEASUREMENT = "/measurement";
-        public static final String API_MEASUREMENT = API + MEASUREMENT;
-        public static final String SOCKET_MEASUREMENT = SOCKET + MEASUREMENT;
+        @NoArgsConstructor(access = PRIVATE)
+        public static class Measurements {
+
+            public static final String MEASUREMENT = "/measurement";
+            public static final String TOPIC_MEASUREMENT = TOPIC + MEASUREMENT;
+
+        }
+
+        @NoArgsConstructor(access = PRIVATE)
+        public static class Health {
+
+            public static final String HEALTH = "/health";
+            public static final String TOPIC_HEALTH = TOPIC + HEALTH;
+
+        }
 
     }
 
