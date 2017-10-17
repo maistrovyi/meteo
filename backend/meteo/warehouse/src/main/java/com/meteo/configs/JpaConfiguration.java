@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+@Profile(value = "dev")
 @SpringBootConfiguration
 @EnableTransactionManagement
-@Profile(value = {"dev", "production"})
 @EnableJpaRepositories(basePackages = "com.meteo.repositories")
 public class JpaConfiguration {
 
