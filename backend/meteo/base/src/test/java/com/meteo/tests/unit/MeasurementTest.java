@@ -2,7 +2,7 @@ package com.meteo.tests.unit;
 
 import com.google.common.collect.Sets;
 import com.meteo.models.Measurement;
-import com.meteo.repositories.MeasurementRepositoryResource;
+import com.meteo.repositories.MeasurementRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle;
 class MeasurementTest {
 
     @Resource
-    private MeasurementRepositoryResource repository;
+    private MeasurementRepository repository;
 
     @BeforeAll
     @SuppressWarnings(value = "unused")

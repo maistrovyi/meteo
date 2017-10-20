@@ -1,7 +1,9 @@
 package com.meteo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @NoArgsConstructor
 @Table(name = "measurements")
 @JsonInclude(value = NON_NULL)
+@JsonPropertyOrder(value = {"id", "temperature", "humidity", "pressure"})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Measurement {
 
@@ -43,6 +46,7 @@ public class Measurement {
     @Column(name = "pressure", nullable = false)
     private BigDecimal pressure;
 
+    @JsonIgnore
     @Column(name = "time", nullable = false)
     private ZonedDateTime time;
 
