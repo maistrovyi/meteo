@@ -2,8 +2,7 @@ package com.meteo.tests.unit;
 
 import com.google.common.collect.Sets;
 import com.meteo.models.Measurement;
-import com.meteo.repositories.MeasurementRepositoryResource;
-import lombok.extern.slf4j.Slf4j;
+import com.meteo.repositories.MeasurementRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -14,10 +13,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.TestInstance.Lifecycle;
 
-@Slf4j
 @DataJpaTest
 @Tag(value = "unit-fast")
 @TestInstance(Lifecycle.PER_CLASS)
@@ -26,7 +25,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle;
 class MeasurementTest {
 
     @Resource
-    private MeasurementRepositoryResource repository;
+    private MeasurementRepository repository;
 
     @BeforeAll
     @SuppressWarnings(value = "unused")
@@ -43,7 +42,6 @@ class MeasurementTest {
                         .pressure(BigDecimal.valueOf(745))
                         .build()
         ));
-        log.info("Successfully persisted default entities data for integration tests.");
     }
 
     @Test

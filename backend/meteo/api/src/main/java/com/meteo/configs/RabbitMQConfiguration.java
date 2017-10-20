@@ -9,8 +9,10 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @Slf4j
+@Profile(value = "dev")
 @SpringBootConfiguration
 public class RabbitMQConfiguration {
 
