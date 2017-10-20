@@ -1,9 +1,8 @@
 package com.meteo.tests.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meteo.models.Measurement;
 import com.meteo.repositories.MeasurementRepository;
-import com.meteo.tests.TestJpaConfiguration;
+import com.meteo.tests.configs.TestJpaConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +20,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 
-import static com.meteo.configs.ApiConstants.Endpoints.Measurements.API_MEASUREMENT;
+import static com.meteo.configs.ApiConstants.Endpoints.API_MEASUREMENT;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.isA;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -40,14 +40,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(value = SpringExtension.class)
 public class MeasurementControllerTest {
 
+    private final String INITIAL_ID_SEQ = "1";
+
     @Resource
     MockMvc mockMvc;
 
     @Resource
     MeasurementRepository repository;
-
-    @Resource
-    ObjectMapper objectMapper;
 
     Measurement dto;
 
@@ -62,18 +61,16 @@ public class MeasurementControllerTest {
         repository.save(dto);
     }
 
-    @Disabled
     @Test
     @DisplayName(value = "count test")
     public void testCount() throws Exception {
-        mockMvc.perform(get(API_MEASUREMENT + "/count")
+        mockMvc.perform(get(API_MEASUREMENT + "count")
                         .contentType(MediaType.APPLICATION_JSON_UTF8))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andExpect(jsonPath("count", isA(Integer.class)));
     }
 
-    @Disabled
     @Test
     @DisplayName(value = "find all test")
     public void testFindAll() throws Exception {
@@ -82,5 +79,19 @@ public class MeasurementControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName(value = "find today")
+    public void testFindToday() throws Exception {
+//        TODO persist some measurements with different datetime
+        mockMvc.perform(get(API_MEASUREMENT + "today")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isOk())
+//                TODO expect of content
+                .andExpect(jsonPath("$.*", hasSize(1)));
+    }
+
+//    TODO implement test find by day
 
 }
