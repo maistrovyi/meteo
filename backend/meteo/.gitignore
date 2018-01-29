@@ -15,3 +15,5 @@ gradlew.bat
 /base/out/
 /warehouse/build/
 /warehouse/out/
+/tractor/build/
+/tractor/out/
