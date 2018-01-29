@@ -2,39 +2,46 @@ server:
   port: 8080
   servlet:
     context-path: /meteo
-
 management:
-  port: 8090
-  context-path: /meteo/management
-
+  endpoints:
+    web:
+      base-path: /meteo/management
+  endpoint:
+    flyway:
+      enabled: true
+  server:
+    port: 8090
 spring:
  profiles:
    active: dev
  jpa:
    show-sql: true
+   open-in-view: true
    hibernate:
      ddl-auto: create-drop
    properties:
-     hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+     javax.persistence.validation.mode: ddl
+     hibernate.dialect.storage_engine: innodb
+     hibernate.dialect: org.hibernate.dialect.MySQL57Dialect
      hibernate.format_sql: false
      hibernate.cache.use_second_level_cache: false
      hibernate.cache.use_query_cache: false
      hibernate.generate_statistics: false
+     hibernate.jdbc.batch_size: 500
  datasource:
    hikari:
      jdbc-url: jdbc:mysql://localhost:32768/meteo?autoReconnect=true&useSSL=false
      username: root
      password: 12345
-     connection-timeout: 30000
-     maximum-pool-size: 3
      minimum-idle: 1
+     maximum-pool-size: 20
      max-lifetime: 600000
+     connection-timeout: 10000
  rabbitmq:
-   port: 32777
+   port: 32787
    host: localhost
    username: admin
    password: admin
-
 logging:
   level:
     root: info

@@ -1,9 +1,8 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.M5'
-        depManPluginVersion = '1.0.3.RELEASE'
-        jupiterVersion = '5.0.1'
-        guavaVersion= '23.0'
+        springBootVersion = '2.0.0.M7'
+        depManPluginVersion = '1.0.4.RELEASE'
+        jupiterVersion = '5.0.3'
     }
     repositories {
         mavenCentral()
@@ -36,7 +35,7 @@ subprojects {
 
     dependencies {
         /***************************** other *****************************/
-        compile('org.projectlombok:lombok')
-        compile("com.google.guava:guava:${guavaVersion}")
+        compile("org.projectlombok:lombok:1.16.20")
     }
+
 }

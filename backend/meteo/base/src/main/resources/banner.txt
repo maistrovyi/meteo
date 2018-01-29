@@ -1,0 +1,8 @@
+
+${AnsiColor.GREEN}    /|    //| |
+${AnsiColor.GREEN}   //|   // | |     ___     __  ___     ___        ___
+${AnsiColor.GREEN}  // |  //  | |   //___) )   / /      //___) )   //   ) )
+${AnsiColor.GREEN} //  | //   | |  //         / /      //         //   / /
+${AnsiColor.GREEN}//   |//    | | ((____     / /      ((____     ((___/ /
+
+${AnsiColor.BRIGHT_BLUE}:: Meteo 1.0.0.M1 🤓  :: Running Spring Boot ${spring-boot.version} ::

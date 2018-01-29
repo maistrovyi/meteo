@@ -1,8 +1,8 @@
 group = 'com.meteo.api'
 version = '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 9
+targetCompatibility = 9
 
 dependencies {
     /***************************** modules *****************************/
@@ -10,7 +10,6 @@ dependencies {
 
     /***************************** spring *****************************/
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-amqp')
 
     /***************************** testing *****************************/
