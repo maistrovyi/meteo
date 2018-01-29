@@ -2,12 +2,11 @@ group = 'com.meteo.warehouse'
 version = '0.0.1-SNAPSHOT'
 apply plugin: 'project-report'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 9
+targetCompatibility = 9
 
 ext {
-    mariaDBVersion = '2.1.2'
-    guavaVersion= '23.0'
+    mariaDBVersion = '2.2.1'
 }
 
 dependencies {

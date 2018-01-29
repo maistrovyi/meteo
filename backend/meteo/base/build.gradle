@@ -1,8 +1,8 @@
 group = 'com.meteo.base'
 version = '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 9
+targetCompatibility = 9
 
 dependencies {
     /***************************** modules *****************************/
@@ -10,6 +10,7 @@ dependencies {
     compile project(':api')
 
     /***************************** spring *****************************/
+    compile('org.springframework.boot:spring-boot-starter-webflux')
 
     /***************************** testing *****************************/
     testCompile('org.springframework.boot:spring-boot-starter-test')
