@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.M7'
+        springBootVersion = '2.0.0.RC1'
         depManPluginVersion = '1.0.4.RELEASE'
         jupiterVersion = '5.0.3'
     }

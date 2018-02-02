@@ -3,17 +3,13 @@
 *.iml
 *.ipr
 
-/build/
 gradlew
 gradlew.bat
 /gradle/
 /.gradle/
 /out/
-/api/build/
-/api/out/
-/base/build/
-/base/out/
-/warehouse/build/
-/warehouse/out/
-/tractor/build/
-/tractor/out/
+
+/*/out/
+/*/build/
+/*/gradle/
+/*/.gradle/
