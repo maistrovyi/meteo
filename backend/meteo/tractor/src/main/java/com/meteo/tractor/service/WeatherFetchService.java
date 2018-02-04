@@ -32,7 +32,7 @@ import static tk.plogitech.darksky.forecast.ForecastRequestBuilder.Block.*;
 @RequiredArgsConstructor
 public final class WeatherFetchService {
 
-    private static final AtomicInteger REQUEST_COUNTER = new AtomicInteger(200);
+    private static final AtomicInteger REQUEST_COUNTER = new AtomicInteger(100);
     private static final Set<String> WEATHER_PARTITION = new LinkedHashSet<>();
 
     private static Supplier<ForecastRequest> requestSupplier(LocalDateTime at) {
