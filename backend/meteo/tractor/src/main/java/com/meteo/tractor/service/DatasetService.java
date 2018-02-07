@@ -32,7 +32,6 @@ public final class DatasetService {
             new FileWriter(DATASET_PATH, true);
             log.info("File '{}' successfully created!", DATASET_NAME);
         }
-        findLatestDate();
     }
 
     @SneakyThrows
@@ -41,8 +40,9 @@ public final class DatasetService {
         File dataset = new File(DATASET_PATH);
         BufferedReader bufferedReader = new BufferedReader(new FileReader(dataset));
         String latest = null;
-        while (Objects.nonNull(bufferedReader.readLine())) {
-            latest = bufferedReader.readLine();
+        String tmp;
+        while ((tmp = bufferedReader.readLine()) != null) {
+            latest = tmp;
         }
         if (Objects.isNull(latest)) {
             return START_AT;

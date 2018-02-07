@@ -68,7 +68,7 @@ public final class WeatherFetchService {
         datasetService.append(WEATHER_PARTITION);
         long after = System.nanoTime();
         long time = SECONDS.convert(after - before, NANOSECONDS);
-        log.info("Fetching of '{}' forecasts successfully finished in '{}' seconds!", REQUESTS_LIMIT - REQUEST_COUNTER.get(), time);
+        log.info("Fetching successfully finished in '{}' seconds!", time);
     }
 
 }
