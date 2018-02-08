@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
@@ -56,13 +57,16 @@ public final class WeatherFetchService {
         long before = System.nanoTime();
         LocalDateTime at = datasetService.findLatestDate();
         while (REQUEST_COUNTER.get() <= REQUESTS_LIMIT) {
-            if (!LocalDate.now().isEqual(at.toLocalDate())) {
+            if (LocalDate.now().isEqual(at.toLocalDate())) {
+                break;
+            } else {
                 log.debug("Fetching weather at '{}'", at);
                 Forecast forecast = client.forecast(requestSupplier(at).get());
                 Set<String> set = MAP_TO_DAY_LINE.apply(forecast);
                 WEATHER_PARTITION.addAll(set);
                 REQUEST_COUNTER.incrementAndGet();
                 at = at.plusDays(1);
+                TimeUnit.SECONDS.sleep(1);
             }
         }
         datasetService.append(WEATHER_PARTITION);
